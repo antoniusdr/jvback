@@ -14,8 +14,24 @@ module.exports = (sequelize, DataTypes) => {
   }
   user.init(
     {
-      name: {
+      firstName: {
         type: DataTypes.STRING,
+        allowNull: false,
+      },
+      lastName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      discordName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      editBattleContestant: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+      },
+      isAdmin: {
+        type: DataTypes.BOOLEAN,
         allowNull: false,
       },
       email: {
