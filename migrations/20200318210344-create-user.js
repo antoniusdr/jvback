@@ -8,7 +8,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      name: {
+      firstName: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      lastName: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -20,6 +24,27 @@ module.exports = {
       password: {
         type: Sequelize.STRING,
         allowNull: false,
+      },
+      discordName: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      editBattleContestant: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+      },
+      isAdmin: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+      },
+      emailOptIn: {
+        type: Sequelize.BOOLEAN,
+      },
+      twitchHandle: {
+        type: Sequelize.STRING,
+      },
+      instagramHandle: {
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
