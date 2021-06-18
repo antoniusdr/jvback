@@ -5,6 +5,7 @@ const { PORT } = require("./config/constants");
 const authRouter = require("./routers/auth");
 const authMiddleWare = require("./auth/middleware");
 const submissionsRouter = require("./routers/submissions");
+const contestsRouter = require("./routers/contests");
 
 const app = express();
 
@@ -153,6 +154,7 @@ app.post("/authorized_post_request", authMiddleWare, (req, res) => {
 
 app.use("/", authRouter);
 app.use("/submissions", submissionsRouter);
+app.use("/contests", contestsRouter);
 
 // Listen for connections on specified port (default is port 4000)
 
