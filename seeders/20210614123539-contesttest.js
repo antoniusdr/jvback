@@ -20,6 +20,14 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        contestName: "test data",
+        isActive: true,
+        imgUrl: "https://i.imgur.com/4VQtA6G.jpg",
+        description: "test data letsgo",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
     ]);
   },
 

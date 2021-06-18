@@ -4,8 +4,8 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert("submissions", [
       {
-        trackName:
-          "Ariana Grande - 34+35 (Citypop ver.) 아리아나 그란데 시티팝 버전",
+        songDescription: "Ariana yukika sheesh",
+        trackScore: 10,
         soundcloudUrl:
           "https://soundcloud.com/danpiamuzik/ariana-grande-3435-citypop-ver",
         createdAt: new Date(),
@@ -14,7 +14,8 @@ module.exports = {
         contestId: 1,
       },
       {
-        trackName: "TWICE - I CAN'T STOP ME (Feat. Blackpink, redvelvet)",
+        songDescription: "crazy kpop mashup i did pog",
+        trackScore: 9,
         soundcloudUrl:
           "https://soundcloud.com/danpiamuzik/twice-blackpink-red-velvet-i-cant-stop-me-mashup",
         createdAt: new Date(),

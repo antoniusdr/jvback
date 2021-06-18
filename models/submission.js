@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
   submission.init(
     {
       soundcloudUrl: { type: DataTypes.STRING, allowNull: false },
-      trackName: { type: DataTypes.STRING, allowNull: false },
+      songDescription: { type: DataTypes.STRING },
+      trackScore: { type: DataTypes.INTEGER },
     },
     {
       sequelize,

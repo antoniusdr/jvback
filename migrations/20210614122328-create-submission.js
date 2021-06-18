@@ -29,8 +29,11 @@ module.exports = {
       soundcloudUrl: {
         type: Sequelize.STRING,
       },
-      trackName: {
+      songDescription: {
         type: Sequelize.STRING,
+      },
+      trackScore: {
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,
