@@ -8,8 +8,13 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      submission.belongsTo(models.user, { foreignKey: "id" });
-      submission.belongsTo(models.contest, { foreignKey: "id" });
+      submission.belongsTo(models.user, { foreignKey: "userId", as: "create" });
+      submission.belongsTo(models.contest, { foreignKey: "contestId" });
+      submission.belongsToMany(models.user, {
+        through: "userVotes",
+        foreignKey: "submissionId",
+        as: "voting",
+      });
     }
   }
   submission.init(
