@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      user.hasMany(models.submission, { as: "create" });
+      user.hasMany(models.submission, { as: "newCreate" });
       user.belongsToMany(models.submission, {
         through: "userVotes",
         foreignKey: "userId",
