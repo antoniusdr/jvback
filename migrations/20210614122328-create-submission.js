@@ -32,6 +32,10 @@ module.exports = {
       songDescription: {
         type: Sequelize.STRING,
       },
+      nickname: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       trackScore: {
         type: Sequelize.INTEGER,
       },

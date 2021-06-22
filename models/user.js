@@ -9,13 +9,10 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      user.hasMany(models.submission, {
-        as: "create",
-      });
+      user.hasMany(models.submission, { as: "create" });
       user.belongsToMany(models.submission, {
         through: "userVotes",
         foreignKey: "userId",
-        as: "voting",
       });
     }
   }
@@ -49,6 +46,15 @@ module.exports = (sequelize, DataTypes) => {
       password: {
         type: DataTypes.STRING,
         allowNull: false,
+      },
+      emailOptIn: {
+        type: DataTypes.BOOLEAN,
+      },
+      twitchHandle: {
+        type: DataTypes.STRING,
+      },
+      instagramHandle: {
+        type: DataTypes.STRING,
       },
     },
     {

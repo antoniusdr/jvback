@@ -33,12 +33,13 @@ router.post("/:id", auth, async (req, res) => {
     if (!userId === req.user.id) {
       return res.status(403).send({ message: "Not authorized to create" });
     }
-    const { contestId, songDescription, soundcloudUrl } = req.body;
+    const { contestId, songDescription, soundcloudUrl, nickname } = req.body;
     const submission = await Submissions.create({
       userId,
       contestId,
       songDescription,
       soundcloudUrl,
+      nickname,
     });
     return res.status(201).send({ message: "Submission created", submission });
   } catch (error) {

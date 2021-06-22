@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      userVote.belongsTo(models.user, { as: "voting" });
+      userVote.belongsTo(models.user);
       userVote.belongsTo(models.submission);
     }
   }

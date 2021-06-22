@@ -12,6 +12,7 @@ module.exports = {
         updatedAt: new Date(),
         userId: 2,
         contestId: 1,
+        nickname: "a",
       },
       {
         songDescription: "crazy kpop mashup i did pog",
@@ -22,6 +23,7 @@ module.exports = {
         updatedAt: new Date(),
         userId: 3,
         contestId: 2,
+        nickname: "Anton",
       },
     ]);
   },

@@ -10,14 +10,14 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        userId: "1",
+        userId: "2",
         submissionId: "1",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         userId: "1",
-        submissionId: "1",
+        submissionId: "2",
         createdAt: new Date(),
         updatedAt: new Date(),
       },

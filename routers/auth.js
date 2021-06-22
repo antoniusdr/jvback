@@ -34,6 +34,35 @@ router.post("/login", async (req, res, next) => {
   }
 });
 
+router.patch(`/user/:id`, async (req, res) => {
+  try {
+    const {
+      firstName,
+      lastName,
+      email,
+      discordName,
+      editBattleContestant,
+      instagramHandle,
+      twitchHandle,
+      emailOptIn,
+    } = req.body;
+    const updateProfile = await User.findByPk(req.params.id);
+    await updateProfile.update({
+      firstName,
+      lastName,
+      email,
+      discordName,
+      editBattleContestant,
+      instagramHandle,
+      twitchHandle,
+      emailOptIn,
+    });
+    return res.status(200).send({ message: "profile updated" });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 router.post("/signup", async (req, res) => {
   const {
     email,

@@ -8,12 +8,11 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      submission.belongsTo(models.user, { foreignKey: "userId", as: "create" });
+      submission.belongsTo(models.user, { foreignKey: "id", as: "create" });
       submission.belongsTo(models.contest, { foreignKey: "contestId" });
       submission.belongsToMany(models.user, {
         through: "userVotes",
         foreignKey: "submissionId",
-        as: "voting",
       });
     }
   }
@@ -21,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       soundcloudUrl: { type: DataTypes.STRING, allowNull: false },
       songDescription: { type: DataTypes.STRING },
+      nickname: { type: DataTypes.STRING, allowNull: false },
       trackScore: { type: DataTypes.INTEGER },
     },
     {
