@@ -7,6 +7,21 @@ const { SALT_ROUNDS } = require("../config/constants");
 
 const router = new Router();
 
+router.get("/all", async (req, res) => {
+  try {
+    const limit = req.query.limit || 20;
+    const offset = 0;
+    const allUsers = await User.findAndCountAll({
+      limit,
+      offset,
+      order: [["createdAt", "DESC"]],
+    });
+    res.status(200).send({ message: "OK", allUsers });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 router.post("/login", async (req, res, next) => {
   try {
     const { email, password } = req.body;
