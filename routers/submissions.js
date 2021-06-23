@@ -2,7 +2,7 @@ const { Router } = require("express");
 const auth = require("../auth/middleware");
 const Submissions = require("../models").submission;
 const User = require("../models").user;
-const UserVote = require("../models").userVote;
+const userVote = require("../models").userVote;
 
 const router = new Router();
 
@@ -24,9 +24,22 @@ router.get("/", async (req, res, next) => {
 
 router.post("/vote", auth, async (req, res) => {
   try {
-    const { userId, submissionId } = req.body;
-    const newVote = await UserVote.create({ userId, submissionId });
-    return res.status(201).send({ message: "New vote posted", newVote });
+    const { userId, submissionId, contestId } = req.body;
+    const votesByUser = await userVote.findAll({
+      where: { userId: userId, contestId: contestId },
+    });
+    if (votesByUser.length >= 5) {
+      return res
+        .status(403)
+        .send({ message: "You already voted 5 times in this contest!" });
+    } else {
+      const newVote = await userVote.create({
+        userId,
+        submissionId,
+        contestId,
+      });
+      return res.status(201).send({ message: "New vote posted", newVote });
+    }
   } catch (error) {
     console.log(error);
   }

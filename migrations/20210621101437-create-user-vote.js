@@ -30,6 +30,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
+
+      contestId: {
+        type: Sequelize.INTEGER,
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {

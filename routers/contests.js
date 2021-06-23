@@ -1,5 +1,5 @@
 const { Router } = require("express");
-// const auth = require ("../auth/middleware")
+const auth = require("../auth/middleware");
 const Contests = require("../models").contest;
 
 const router = new Router();
@@ -11,6 +11,21 @@ router.get("/", async (req, res, next) => {
   } catch (error) {
     console.log(error);
     return res.status(400).send({ message: "somethin went wrong lol sorry" });
+  }
+});
+
+router.post("/create", async (req, res) => {
+  const { contestName, description, imgUrl, isActive } = req.body;
+  try {
+    const newContest = await Contests.create({
+      contestName,
+      description,
+      imgUrl,
+      isActive,
+    });
+    res.status(200).send({ message: "ok", newContest });
+  } catch (error) {
+    console.log(error);
   }
 });
 
