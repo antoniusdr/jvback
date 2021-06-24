@@ -60,6 +60,7 @@ router.patch(`/user/:id`, async (req, res) => {
       instagramHandle,
       twitchHandle,
       emailOptIn,
+      isAdmin,
     } = req.body;
     const updateProfile = await User.findByPk(req.params.id);
     await updateProfile.update({
@@ -71,11 +72,24 @@ router.patch(`/user/:id`, async (req, res) => {
       instagramHandle,
       twitchHandle,
       emailOptIn,
+      isAdmin,
     });
     return res.status(200).send({ message: "profile updated" });
   } catch (error) {
     console.log(error);
   }
+});
+
+router.delete("/user/:id/delete", async (req, res) => {
+  const deleteProfile = await User.findOne({
+    where: { id: req.params.id },
+  }).catch((e) => {
+    console.log(e.message);
+  });
+  if (!deleteProfile) {
+    console.log(error);
+  }
+  deleteProfile.destroy();
 });
 
 router.post("/signup", async (req, res) => {

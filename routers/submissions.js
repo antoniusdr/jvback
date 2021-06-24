@@ -45,6 +45,28 @@ router.post("/vote", auth, async (req, res) => {
   }
 });
 
+router.patch("/score", async (req, res) => {
+  try {
+    const { id, trackScore } = req.body;
+    const newScore = await Submissions.findByPk(id);
+    await newScore.update({
+      trackScore,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.get("/votes", async (req, res) => {
+  try {
+    const { submissionId } = req.body;
+    const votes = await userVote.findAll({ where: submissionId });
+    return res.status(200).send({ votes });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 router.post("/:id", auth, async (req, res) => {
   try {
     const userId = req.params.id;
